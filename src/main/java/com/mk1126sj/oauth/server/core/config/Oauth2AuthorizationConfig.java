@@ -2,6 +2,7 @@ package com.mk1126sj.oauth.server.core.config;
 
 import com.mk1126sj.oauth.server.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -15,6 +16,9 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 @EnableAuthorizationServer
 @Configuration
 public class Oauth2AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
+
+    @Value("${custom.oauth.url}")
+    private String SERVER_URL;
 
     @Autowired
     private UserService userService;
@@ -40,7 +44,7 @@ public class Oauth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
                 .scopes("read", "write") // 가능한 접근 범위
                 .accessTokenValiditySeconds(60) // 토큰 유효 시간 : 1분
                 .refreshTokenValiditySeconds(60 * 60) // 토큰 유효 시간 : 1시간
-                .redirectUris("http://localhost:8081/callback") // 가능한 redirect uri
+                .redirectUris(String.format("%s/callback", SERVER_URL)) // 가능한 redirect uri
                 .autoApprove(true); // 권한 동의는 자동으로 yes (false 로 할시 권한 동의 여부를 묻는다.)
     }
 

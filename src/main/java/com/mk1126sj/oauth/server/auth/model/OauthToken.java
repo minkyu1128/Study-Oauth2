@@ -66,13 +66,13 @@ public class OauthToken {
     @Data
     public static class response {
         @JsonProperty("access_token")
-        private String accessToken;
+        private String access_token;
         @JsonProperty("token_type")
-        private String tokenType;
+        private String token_type;
         @JsonProperty("refresh_token")
-        private String refreshToken;
+        private String refresh_token;
         @JsonProperty("expires_in")
-        private Long expiresIn;
+        private Long expires_in;
         @JsonProperty("scope")
         private String scope;
     }
