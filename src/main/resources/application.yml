@@ -2,6 +2,8 @@ server:
   port: 8081 # ?? ??
 
 spring:
+  config:
+    import: classpath:config/conf-log.yml
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://minkyu1128.synology.me:43306/ens?rewriteBatchedStatements=true&profileSQL=true&logger=Slf4JLogger&maxQuerySizeToLog=999999

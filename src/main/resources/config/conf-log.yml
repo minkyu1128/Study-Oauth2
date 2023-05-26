@@ -1,0 +1,52 @@
+# ===================================================================================================================================
+# JPA logging lib setting
+# ===================================================================================================================================
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true #p6spy logging 활성화 여부
+      multiline: true
+      logging: slf4j
+#      custom-appender-class: com.p6spy.engine.spy.appender.Slf4JLogger
+#      log-format: cokr.xit.ens.core.config.support.P6spySqlFormatConfiguration
+      tracing:
+        include-parameter-values: true
+
+# ===================================================================================================================================
+# Logging 설정
+# ===================================================================================================================================
+logging:
+  charset:
+    console: utf-8
+    file: utf-8
+  level:
+    root: info
+    '[org.hibernate.type.descriptor.sql]': off  #jpa "?" 부분(binding 파라미터) 출력
+#    '[org.springframework.orm.jpa]': debug
+#    '[org.springframework.transaction]': debug
+#    '[org.springframework.transaction.interceptor]': trace
+#    '[org.springframework.jdbc.core]': off
+#    '[org.springframework.orm]': off
+#    '[org.springframework.orm.hibernate5]': off
+#    '[com.p6spy.engine.logging]': off
+#    '[com.p6spy]': off
+#    '[org.hibernate]': off
+#    '[org.hibernate.sql]': off
+#    '[org.hibernate.jpa]': off
+  exception-conversion-word: '%wEx'
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(${LOG_LEVEL_PATTERN:-%5p}){green} %clr([%18thread]){magenta} %clr(%-40.40logger{39}%line){cyan} %clr(: %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}){faint}'
+  file:
+    name: ./logs/logback.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}-%i.log
+      #보관일수
+      max-history: 30
+      #용량제한
+      max-file-size: 100MB
+  #    '[org.hibernate.type.descriptor.sql]': trace
+  #    '[org.springframework]': debug
+  #    '[org.hibernate]': info
+#  slack:
+#    webhook-uri: https://hooks.slack.com/services/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

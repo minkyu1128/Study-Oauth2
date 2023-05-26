@@ -90,4 +90,5 @@ grant_type은 OAuth 2.0 인증프로세스의 중요한 부분 입니다.
 ### 사이트 참조
 + [SSO란 무엇인가요](https://aws.amazon.com/ko/what-is/sso/)
 + [5분안에 구축하는 OAuth 서버 - 01](https://co-de.tistory.com/29)
++ [5분안에 구축하는 OAuth 서버 - 02](https://co-de.tistory.com/36)
 + [SpringBoot - OAuth2 Client 만들기]
